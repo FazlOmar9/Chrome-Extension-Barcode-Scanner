@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Barcode Detector",
+  "version": "1.2",
+  "description": "Detect 1D and QR barcodes from selected screen regions.",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["libs/quagga.min.js", "libs/zxing.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

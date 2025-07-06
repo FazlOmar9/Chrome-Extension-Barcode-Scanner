@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+  width: 250px;
+  padding: 10px;
+}
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#result {
+  margin-top: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

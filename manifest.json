@@ -14,12 +14,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
+  "content_scripts": [],
   "web_accessible_resources": [
     {
       "resources": ["libs/quagga.min.js", "libs/zxing.min.js"],

@@ -1,11 +1,20 @@
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   if (msg.type === 'CAPTURE') {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const [tab] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
 
-    // Inject content.js only (html2canvas is already embedded in it)
+    // Inject new content script
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ['content.js']
+      files: ['content_new.js'],
     });
+  } else if (msg.type === 'CAPTURE_VISIBLE_TAB') {
+    chrome.tabs.captureVisibleTab(null, { format: 'png' }, (dataUrl) => {
+      sendResponse({ dataUrl });
+    });
+    // Required for async response
+    return true;
   }
 });
